@@ -27,8 +27,7 @@ TMP_EXTRACTION_DIR = '/tmp' + '/kla'
 KLA_EXE_DIR = TMP_EXTRACTION_DIR + "/KiuwanLocalAnalyzer/bin"
 
 # Function to create the Kiuwan KLA line command.
-# It is created with the minimum amount of parameters. Then the advanced parameters are passed in, the User is responsible for a good format
-# Note the memory parameter has been already created properly
+# It is created with the minimum amount of parameters. Then the advanced parameters are passed in, the user is responsible for a good format
 def getKLACmd(tmp_dir=TMP_EXTRACTION_DIR,
               appname=PARAM_KLA_APPNAME,
               sourcedir=PARAM_KLA_SOURCEDIR,
@@ -46,7 +45,6 @@ def getKLACmd(tmp_dir=TMP_EXTRACTION_DIR,
     return klablcmd
 
 # Function to download and extract the Kiuwan Local Analyzer from kiuwan server
-# TODO: parametrize the URL to support Kiuwan on premises installations
 def downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL):
     print('Downloading KLA zip from ', klaurl, ' at [', os.getcwd(), ']', '...')
     resp = urllib.request.urlopen(klaurl)
@@ -55,7 +53,6 @@ def downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL):
         print("\tFile in zip: ", item)
 
     print('Extracting zip to [', tmp_dir, ']', '...')
-    # Luis: para probar crear dirs
     Path(tmp_dir).mkdir(parents=True, exist_ok=True)
 
     zipf.extractall(tmp_dir)
@@ -68,7 +65,6 @@ def getBLAnalysisCodeFromKLAOutput(output_to_parse):
 def executeKLA(cmd):
     print('Executing [', cmd, '] ...')
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    # (output, err) = pipe.communicate()
     output_text = ''
     try:
       nextline = pipe.stdout.readline()
@@ -81,10 +77,8 @@ def executeKLA(cmd):
         print("Keyboard interrupt... why??")
         return output_text, pipe.returncode
         
-    #return_code = pipe.wait()
     return output_text, pipe.returncode
 
-# Actual executing code after defining the functions
 # Extract and download KLA from kiuwan.com (or from on-premise site)
 downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
@@ -99,53 +93,53 @@ if rc==0:
   print('Analysis code [', analysis_code, ']')
   print('Analysis successful')
 elif rc == 1:
-  print('::set-output name=message::Analyzer execution error.')
+  print('Analyzer execution error.')
 elif rc == 10:
-  print('::set-output name=message::Audit overall result = FAIL.')
+  print('Audit overall result = FAIL.')
 elif rc == 11:
-  print('::set-output name=message::Invalid analysis configuration.')
+  print('Invalid analysis configuration.')
 elif rc == 12:
-  print('::set-output name=message::The downloaded model does not support any of the discovered languages.')
+  print('The downloaded model does not support any of the discovered languages.')
 elif rc == 13:
-  print('::set-output name=message::Timeout waiting for analysis results.')
+  print('Timeout waiting for analysis results.')
 elif rc == 14:
-  print('::set-output name=message::Analysis finished with an error in Kiuwan.')
+  print('Analysis finished with an error in Kiuwan.')
 elif rc == 15:
-  print('::set-output name=message::Timeout: killed the subprocess.')
+  print('Timeout: killed the subprocess.')
 elif rc == 16:
-  print('::set-output name=message::Baseline analysis not permitted for current user.')
+  print('Baseline analysis not permitted for current user.')
 elif rc == 17:
-  print('::set-output name=message::Delivery analysis not permitted for current user.')
+  print('Delivery analysis not permitted for current user.')
 elif rc == 18:
-  print('::set-output name=message::No analyzable extensions found.')
+  print('No analyzable extensions found.')
 elif rc == 19:
-  print('::set-output name=message::Error checking license.')
+  print('Error checking license.')
 elif rc == 21:
-  print('::set-output name=message::Invalid CLI parameter	.')
+  print('Invalid CLI parameter	.')
 elif rc == 22:
-  print('::set-output name=message::Access denied.')
+  print('Access denied.')
 elif rc == 23:
-  print('::set-output name=message::Bad Credentials.')
+  print('Bad Credentials.')
 elif rc == 24:
-  print('::set-output name=message::Application Not Found.')
+  print('Application Not Found.')
 elif rc == 25:
-  print('::set-output name=message::Limit Exceeded for Calls to Kiuwan API.')
+  print('Limit Exceeded for Calls to Kiuwan API.')
 elif rc == 26:
-  print('::set-output name=message::Quota Limit Reached	.')
+  print('Quota Limit Reached.')
 elif rc == 27:
-  print('::set-output name=message::Analysis Not Found.') 
+  print('Analysis Not Found.') 
 elif rc == 28:
-  print('::set-output name=message::Application already exists.')
+  print('Application already exists.')
 elif rc == 30:
-  print('::set-output name=message::Delivery analysis not permitted: baseline analysis not found.')
+  print('Delivery analysis not permitted: baseline analysis not found.')
 elif rc == 31:
-  print('::set-output name=message::No engine available.')
+  print('No engine available.')
 elif rc == 32:
-  print('::set-output name=message::Unexpected error	.')
+  print('Unexpected error.')
 elif rc == 33:
-  print('::set-output name=message::Out of Memory.')
+  print('Out of Memory.')
 elif rc == 34:
-  print('::set-output name=message::JVM Error	.')
+  print('JVM Error.')
 else:
-  print('::set-output name=message::No error message found.')
+  print('No error message found.')
 
