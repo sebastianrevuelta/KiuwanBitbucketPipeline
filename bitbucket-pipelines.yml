@@ -1,0 +1,7 @@
+image: openkbs/jdk-mvn-py3
+
+pipelines:
+  default:
+    - step:
+        script:
+          - python3 kla.py $KIUWAN_URL completeDelivery
