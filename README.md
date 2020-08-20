@@ -4,11 +4,11 @@ As a powerful CI/CD tool, bitbucket offers the possibility to define pipelines w
 
 I will define here the steps we need to invoke Kiuwan analysis:
 
-1)	Create bitbucket-pipelines.yml
+### Create bitbucket-pipelines.yml
 In the root folder of the project we need to create the file bitbucket-pipelines.yml.
 This file will define the steps that will be executed in the pipeline. The execution of the pipeline runs on a private host machine from bitbucket. 
 
-2)	Choose a docker base image
+### Choose a docker base image
 We can specify a docker base image with our software requirements. If we don’t specify a docker base image, bitbucket is offering two:
 atlassian/default-image:1
 atlassian/default-image:2
@@ -19,7 +19,7 @@ In Kiuwan case we need a docker base image with Java8 and Python3. So we can use
 image: openkbs/jdk-mvn-py3
 ```
 
-3)	Define the step: Kiuwan analysis
+### Define the step: Kiuwan analysis
 Then we want to indicate that we would like to run a Kiuwan analysis. The steps to run a Kiuwan analysis are: 
 ##### download Kiuwan Local Analyzer
 ##### run the analysis itself
@@ -59,7 +59,7 @@ To define project variables, you need to go to:
 You can check all the default bitbucket variables here:
 https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
 
-4)	Define the scope of the analysis
+### Define the scope of the analysis
 Finally, indicate that you can define the scope of the analysis in the bitbucket-pipelines.yml file:
 ```sh
 python3 kla.py $KIUWAN_URL baseline 
