@@ -1,6 +1,7 @@
 # Kiuwan and Bitbucket pipelines
 
 As a powerful CI/CD tool, bitbucket offers the possibility to define pipelines with all the steps that your source code needs to be compiled/tested/analyzed/promoted and so on.
+In this case we will explain how to run kiuwan analysis.
 
 ## Quick usage:
 1) Copy the files bitbucket-pipelines.yml and kla.py in the root folder of your current project.
