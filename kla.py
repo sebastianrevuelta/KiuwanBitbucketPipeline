@@ -13,10 +13,10 @@ from pathlib import Path
 # Params used in the call to the baseline analysis.
 args = sys.argv
 PARAM_KLA_BASEURL = args[1]
-PARAM_KLA_SCOPE = args[2]
+PARAM_KLA_APPNAME = args[2]
+PARAM_KLA_SCOPE = args[3]
 PARAM_KLA_USERNAME = '$KIUWAN_USER' 
 PARAM_KLA_PASSWORD = '$KIUWAN_PASS'
-PARAM_KLA_APPNAME = '$BITBUCKET_PROJECT_REPO_FULL_NAME'
 PARAM_KLA_SOURCEDIR = '$BITBUCKET_CLONE_DIR'
 PARAM_KLA_LABEL = '$BITBUCKET_BUILD_NUMBER'
 PARAM_KLA_DATABASETYPE = '$KIUWAN_SQL_TYPE'
@@ -40,12 +40,12 @@ def getKLACmd(tmp_dir=TMP_EXTRACTION_DIR,
     prefix = tmp_dir + '/KiuwanLocalAnalyzer/bin/'
     agent = prefix + 'agent.sh'
     os.chmod(agent, stat.S_IRWXU)
-
+    
     if "/" in appname: ##it can be ##user/appname
         pos = appname.find("/")
         appname = appname[pos+1:] ##remove user/
-
-    klablcmd = '{} -c -n {} -s {} -as {} -l {} --user {} --pass {} transactsql.parser.valid.list={} {}'.format(agent, appname, sourcedir, scope, label, user, password, dbtype, advanced)
+    print(appname) 
+    klablcmd = '{} -c -n {} -s {} -as {} -l {} --user {} --pass {} sql.parser.valid.list={} {}'.format(agent, appname, sourcedir, scope, label, user, password, dbtype, advanced)
     return klablcmd
 
 # Function to download and extract the Kiuwan Local Analyzer from kiuwan server

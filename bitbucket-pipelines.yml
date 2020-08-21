@@ -4,4 +4,4 @@ pipelines:
   default:
     - step:
         script:
-          - python3 kla.py $KIUWAN_URL completeDelivery
+          - python3 kla.py $KIUWAN_URL $BITBUCKET_PROJECT_REPO_FULL_NAME baseline
