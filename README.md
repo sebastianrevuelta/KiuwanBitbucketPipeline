@@ -10,7 +10,7 @@ In this case we will explain how to run kiuwan analysis.
 
 ### Define the workspace and repository variables
 The script kla.py uses some variables from Bitbucket:
-* BITBUCKET_PROJECT_FULL_REPO_NAME (it will be use as Kiuwan app name)
+* BITBUCKET_REPO_FULL_NAME (it will be use as Kiuwan app name)
 * BITBUCKET_CLONE_DIR (it is the path with the source code)
 * BITBUCKET_BUILD_NUMBER (to tag the analysis)
 
@@ -33,7 +33,7 @@ https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
 ### Define the scope of the analysis
 Finally, indicate that you can define the scope of the analysis in the bitbucket-pipelines.yml file:
 ```sh
-python3 kla.py $KIUWAN_URL $BITBUCKET_PROJECT_REPO_FULL_NAME baseline 
+python3 kla.py $KIUWAN_URL $BITBUCKET_REPO_FULL_NAME baseline 
 ```
 The value can be baseline or completeDelivery or partialDelivery according to your needs. Please check Kiuwan documentation to know more about Kiuwan scope analysis.
 
@@ -72,7 +72,7 @@ pipelines:
   default:
     - step:
         script:
-          - python3 kla.py $KIUWAN_URL $BITBUCKET_PROJECT_REPO_FULL_NAME baseline
+          - python3 kla.py $KIUWAN_URL $BITBUCKET_REPO_FULL_NAME baseline
  ```
 
 
