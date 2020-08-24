@@ -37,7 +37,7 @@ python3 kla.py $KIUWAN_URL $BITBUCKET_REPO_FULL_NAME baseline
 ```
 The value can be baseline or completeDelivery or partialDelivery according to your needs. Please check Kiuwan documentation to know more about Kiuwan scope analysis.
 
-## Detail explanation
+## Appendix: How is built the bitbucket pipelines file
 I will explain here in detail the steps we need to invoke Kiuwan analysis:
 
 ### Create bitbucket-pipelines.yml
