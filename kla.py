@@ -40,7 +40,7 @@ def getKLACmd(tmp_dir=TMP_EXTRACTION_DIR,
     prefix = tmp_dir + '/KiuwanLocalAnalyzer/bin/'
     agent = prefix + 'agent.sh'
     os.chmod(agent, stat.S_IRWXU)
-    
+    print(appname) 
     if "/" in appname: ##it can be ##user/appname
         pos = appname.find("/")
         appname = appname[pos+1:] ##remove user/
