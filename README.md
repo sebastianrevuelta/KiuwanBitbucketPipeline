@@ -9,12 +9,7 @@ In this case we will explain how to run kiuwan analysis.
 3) Define the scope of the analysis as explained below.
 
 ### Define the workspace and repository variables
-The script kla.py uses some variables from Bitbucket:
-* BITBUCKET_REPO_FULL_NAME (it will be use as Kiuwan app name)
-* BITBUCKET_CLONE_DIR (it is the path with the source code)
-* BITBUCKET_BUILD_NUMBER (to tag the analysis)
-
-And some user variables:
+The script kla.py uses some variables that we need to define:
 - KIUWAN_URL (workspace scope, it should be: https://www.kiuwan.com at least you have a Kiuwan On Premise installation)
 - KIUWAN_USER (workspace scope)
 - KIUWAN_PASS (workspace scope)
@@ -29,6 +24,11 @@ To define project variables, you need to go to:
  
 You can check all the default bitbucket variables here:
 https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
+
+In addition, the script kla.py uses some variables from Bitbucket (that we don't need to define, as they already exist):
+* BITBUCKET_REPO_FULL_NAME (it will be use as Kiuwan app name)
+* BITBUCKET_CLONE_DIR (it is the path with the source code)
+* BITBUCKET_BUILD_NUMBER (to tag the analysis)
 
 ### Define the scope of the analysis
 Finally, indicate that you can define the scope of the analysis in the bitbucket-pipelines.yml file:
