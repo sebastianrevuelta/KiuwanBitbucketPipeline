@@ -22,13 +22,13 @@ To define workspace variables, you need to go to:
 To define project variables, you need to go to:
 ##### Project  -> Project Settings -> Repository variables.
  
-You can check all the default bitbucket variables here:
-https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
-
 In addition, the script kla.py uses some variables from Bitbucket (that we don't need to define, as they already exist):
 * BITBUCKET_REPO_FULL_NAME (it will be use as Kiuwan app name)
 * BITBUCKET_CLONE_DIR (it is the path with the source code)
 * BITBUCKET_BUILD_NUMBER (to tag the analysis)
+
+You can check all the default bitbucket variables here:
+https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
 
 ### Define the scope of the analysis
 Finally, indicate that you can define the scope of the analysis in the bitbucket-pipelines.yml file:
